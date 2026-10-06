@@ -15,7 +15,13 @@ jobs:
         with:
           gradle-version: 4.10.3
       - name: Build
-        run: gradle build --no-daemon
+        run: |
+          set +e
+          gradle build --no-daemon > log.txt 2>&1
+          code=$?
+          echo "=== HATALAR ==="
+          grep -A3 "error:" log.txt | head -60
+          exit $code
       - uses: actions/upload-artifact@v4
         with:
           name: elementmod-jar
