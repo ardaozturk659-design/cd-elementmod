@@ -1,10 +1,9 @@
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
         maven { name = "forge"; url = "https://maven.minecraftforge.net/" }
         maven { url = "https://repo.spongepowered.org/maven" }
-        maven { url = "https://libraries.minecraft.net/" }
+        maven { url = "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
@@ -12,13 +11,17 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
+repositories {
+    maven { url = "https://maven.minecraftforge.net/" }
+}
+
 version = "0.3"
 group = "com.elementmod"
 archivesBaseName = "elementmod"
 sourceCompatibility = targetCompatibility = '1.8'
 
 minecraft {
-    version = "1.12.2-14.23.5.2860"
+    version = "1.12.2-14.23.5.2847"
     runDir = "run"
     mappings = "stable_39"
 }
